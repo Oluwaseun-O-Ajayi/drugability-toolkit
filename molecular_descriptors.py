@@ -164,7 +164,6 @@ class MolecularDescriptorCalculator:
         Target: ≥0.42 for improved success rate
         """
         return Lipinski.FractionCSP3(mol)
-
     
     def molar_refractivity(self, mol: Chem.Mol) -> float:
         """
