@@ -1,0 +1,4 @@
+Molecule,Pass,Violations,MW,LogP,HBD,HBA
+Cyclosporine,False,2,1202.6,3.27,5,12
+Vancomycin,False,3,1449.3,0.11,19,25
+Paclitaxel,False,2,853.9,3.74,4,14

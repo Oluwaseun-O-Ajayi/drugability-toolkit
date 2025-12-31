@@ -1,0 +1,57 @@
+rdkit>=2023.3.1
+pandas>=1.5.0
+numpy>=1.24.0
+matplotlib>=3.6.0
+seaborn>=0.12.0
+scikit-learn>=1.2.0
+scipy>=1.10.0
+```
+
+## **.gitignore:**
+```
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Results and data
+results/*.png
+results/*.pdf
+results/*.csv
+results/*.xlsx
+!results/README.md
+
+# Data files
+data/*.sdf
+data/*.mol
+data/*.mol2
+!data/README.md
+!data/fda_approved_drugs.csv
+!data/test_molecules.smi
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Validation outputs
+validation/*.csv
+validation/*.png

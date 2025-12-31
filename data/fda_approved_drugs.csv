@@ -1,0 +1,11 @@
+Drug_Name,SMILES,Indication,Year_Approved,Bioavailability
+Aspirin,CC(=O)Oc1ccccc1C(=O)O,Analgesic,1899,High
+Ibuprofen,CC(C)Cc1ccc(cc1)C(C)C(=O)O,NSAID,1974,High
+Atorvastatin,CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(-c2ccc(F)cc2)n1CC[C@@H](O)C[C@@H](O)CC(=O)O,Statin,1996,Low
+Metformin,CN(C)C(=N)NC(=N)N,Antidiabetic,1995,Moderate
+Sildenafil,CCCC1=NN(C2=C1N=C(NC2=O)C3=C(C=CC(=C3)S(=O)(=O)N4CCN(CC4)C)OCC)C,PDE5_Inhibitor,1998,High
+Lisinopril,NCCCC[C@H](N[C@@H](CCc1ccccc1)C(=O)O)C(=O)N1CCC[C@H]1C(=O)O,ACE_Inhibitor,1987,Moderate
+Amlodipine,CCOC(=O)C1=C(COCCN)NC(C)=C(C(=O)OC)C1c1ccccc1Cl,Calcium_Channel_Blocker,1987,High
+Omeprazole,COc1ccc2[nH]c(nc2c1)[S](=O)Cc1ncc(C)c(OC)c1C,Proton_Pump_Inhibitor,1988,Moderate
+Warfarin,CC(=O)CC(c1ccccc1)c1c(O)c2ccccc2oc1=O,Anticoagulant,1954,High
+Sertraline,CN[C@H]1CC[C@H](c2ccc(Cl)c(Cl)c2)c2ccccc12,SSRI,1991,High
