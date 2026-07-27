@@ -1,35 +1,56 @@
-# Drugability Toolkit 💊
-
-**Computational toolkit for small molecule drug developability assessment: ADMET prediction, synthetic accessibility scoring, lead optimization, and physicochemical property analysis with validated algorithms**
+# Drugability Toolkit
+**Open-source RDKit-based workflow for interpretable small-molecule developability assessment, including molecular descriptors, drug-likeness filters, synthetic accessibility scoring, rule-based ADMET property flags, and screening workflows.**
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![RDKit](https://img.shields.io/badge/Powered%20by-RDKit-3838ff.svg?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM4MzhmZiIvPgogIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjYwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPnJkPC90ZXh0Pgo8L3N2Zz4K)](https://www.rdkit.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+
 ---
 
-## 🎯 Overview
+## Overview
 
-The **Drugability Toolkit** is a comprehensive Python package for assessing the drug-likeness and developability of small molecules. It implements validated computational methods from the pharmaceutical sciences literature to predict key molecular properties that influence drug success.
+Drugability Toolkit is a Python-based cheminformatics workflow for assessing physicochemical properties and early-stage developability characteristics of small molecules
 
-This toolkit is designed for:
-- **Medicinal chemists** optimizing lead compounds
-- **Computational chemists** screening virtual libraries
-- **Drug discovery researchers** prioritizing candidates
-- **Academic researchers** studying structure-property relationships
+The toolkit integrates established descriptor calculations, literature-derived drug-likeness rules, synthetic accessibility scoring, and qualitative ADMET-related assessments into a single reproducible workflow
+
+It is intended for:
+
+- Medicinal chemistry education
+- Computational chemistry research
+- Preliminary compound triage
+- Virtual screening workflows
+- Hypothesis generation and exploratory analysis
 
 ### Key Features
 
-✅ **Molecular Descriptors** - Calculate 15+ physicochemical properties  
-✅ **Drug-likeness Filters** - Lipinski's Rule of Five, Veber rules, Ghose filter, Egan rules  
-✅ **ADMET Prediction** - Absorption, distribution, metabolism, excretion, toxicity  
-✅ **Synthetic Accessibility** - Estimate synthetic difficulty (SA score)  
-✅ **Lead Optimization** - Actionable recommendations for improvement  
-✅ **Batch Screening** - High-throughput virtual screening capabilities  
+- Molecular descriptor calculation (MW, LogP, TPSA, HBD/HBA, QED)
+
+- Drug-likeness assessment using established medicinal chemistry rules
+
+- Qualitative ADMET property flags
+
+- Synthetic accessibility assessment
+
+- Property-based lead assessment guidance
+
+- Batch analysis and screening workflows
+
+- Reproducible example datasets and validation scripts
 
 ---
 
-## 📦 Installation
+### Important Note
+
+Drugability Toolkit is intended for research support, education, and preliminary screening
+
+It does not replace experimental ADMET testing, medicinal chemistry expertise, or pharmacokinetic evaluation
+
+Outputs should be interpreted as computational estimates and rule-based assessments rather than experimentally validated predictions
+
+---
+
+## Installation
 
 ### Requirements
 
@@ -62,7 +83,7 @@ scipy>=1.10.0
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Basic Usage
 
@@ -109,7 +130,7 @@ optimizer.print_report(smiles, "Compound A")
 
 ---
 
-## 💻 Modules
+## Modules
 
 ### 1. Molecular Descriptors Calculator
 
@@ -166,11 +187,11 @@ filter_tool.print_report('CC(=O)Oc1ccccc1C(=O)O', 'Aspirin')
 
 ---
 
-### 3. ADMET Predictor
+### 3. ADMET Property Assessment
 
-Predict absorption, distribution, metabolism, excretion, and toxicity properties.
+Provide qualitative ADMET-related assessments using physicochemical descriptors and literature-derived heuristics
 
-**Predictions Include:**
+**Assessments Include:**
 
 **Absorption:**
 - Human intestinal absorption (HIA)
@@ -232,15 +253,15 @@ scorer.print_report('CC(=O)Oc1ccccc1C(=O)O', 'Aspirin')
 
 ---
 
-### 5. Lead Optimizer
+### 5. Lead Assessment Guidance
 
-Identify issues and suggest molecular modifications for improved drug-likeness.
+Identify descriptor-based property liabilities and provide qualitative guidance for further investigation.
 
 **Analysis Includes:**
 - Property violations (MW, LogP, TPSA, etc.)
 - Severity assessment (critical, high, medium, low)
 - Specific recommendations with rationale
-- Suggested molecular modifications
+- Descriptor-based recommendations
 
 **Example:**
 ```python
@@ -260,7 +281,7 @@ optimizer.print_report('your_smiles_here', 'Lead Compound')
 
 ---
 
-## 📊 Example Workflows
+## Example Workflows
 
 ### Workflow 1: Screening Compound Library
 
@@ -360,11 +381,11 @@ for name, smiles in candidates.items():
 
 ---
 
-## 🧪 Validation
+## Validation
 
 ### Benchmarking Against FDA-Approved Drugs
 
-The toolkit has been validated against FDA-approved oral drugs to ensure accuracy.
+The repository includes demonstration datasets and validation scripts using representative FDA-approved oral drugs and selected beyond-Rule-of-Five compounds. These examples are intended to verify expected behavior of rule-based filters and demonstrate reproducible workflows
 
 **Run validation:**
 ```bash
@@ -377,12 +398,12 @@ python validation/benchmark_fda_drugs.py
 **Lipinski's Rule of Five:**
 - Tested on 10 known oral drugs
 - Tested on 3 "beyond RO5" molecules
-- Accuracy: >90%
+- Expected behavior confirmed for the included demonstration dataset
 
 **FDA Drug Benchmark:**
 - 10 FDA-approved oral drugs analyzed
-- Properties correlate with known bioavailability
-- QED scores align with drug success
+- Provides illustrative comparisons among representative FDA-approved oral drugs
+
 
 **Key Findings:**
 - 80-90% of FDA oral drugs pass Lipinski's RO5
@@ -392,7 +413,7 @@ python validation/benchmark_fda_drugs.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 drugability-toolkit/
@@ -423,7 +444,7 @@ drugability-toolkit/
 
 ---
 
-## 📚 Scientific Background
+## Scientific Background
 
 ### Theoretical Basis
 
@@ -438,11 +459,12 @@ The toolkit implements established quantitative structure-property relationships
 
 ### Algorithm Validation
 
-All algorithms have been validated against:
-- FDA-approved drug databases
-- Published experimental data
-- Known structure-activity relationships
-- Clinical outcomes
+The repository includes demonstration-scale validation examples using:
+- Representative FDA-approved oral drugs
+- Example drug-likeness filters
+- Demonstration screening workflows
+- Literature-derived medicinal chemistry rules
+
 
 ### Limitations
 
@@ -455,17 +477,17 @@ All algorithms have been validated against:
 
 ---
 
-## 🎓 For Academic Use
+## For Academic Use
 
 ### Publication Quality
 
 This toolkit is designed for publication in scientific journals and protocols:
 
-✅ All algorithms based on peer-reviewed literature  
-✅ Validated against known experimental data  
-✅ Comprehensive documentation with citations  
-✅ Reproducible examples and benchmarks  
-✅ Open-source for transparency  
+- All algorithms based on peer-reviewed literature  
+- Validated against known experimental data  
+- Comprehensive documentation with citations  
+- Reproducible examples and benchmarks  
+- Open-source for transparency  
 
 ### Use in Research
 
@@ -481,7 +503,7 @@ Please cite this toolkit in publications (see Citation section below)
 
 ---
 
-## 📖 How to Cite This Work
+## How to Cite This Work
 
 ### Software Citation
 
@@ -511,7 +533,7 @@ After obtaining DOI and publishing protocol:
 
 ---
 
-## 🔬 Methodology
+## Methodology
 
 ### Molecular Descriptors
 
@@ -546,7 +568,7 @@ Modified implementation based on molecular complexity:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Areas for enhancement:
 
@@ -578,7 +600,7 @@ Contributions are welcome! Areas for enhancement:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License:
 
@@ -604,7 +626,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **RDKit Community** for the excellent cheminformatics toolkit
 - **Medicinal Chemistry Literature** for validated algorithms
@@ -613,7 +635,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
-## 📧 Contact
+## Contact
 
 **Oluwaseun O. Ajayi**  
 PhD Researcher in Chemistry  
@@ -625,7 +647,7 @@ University of Georgia
 
 ---
 
-## 🔗 Additional Resources
+## Additional Resources
 
 ### Related Tools
 - [RDKit](https://www.rdkit.org/) - Cheminformatics toolkit
@@ -643,7 +665,7 @@ See `references/` folder for comprehensive literature list
 
 ---
 
-## 🚀 Future Development
+## Future Development
 
 **Planned Features:**
 - Deep learning ADMET models
@@ -659,17 +681,15 @@ Submit feature requests via GitHub Issues
 
 ---
 
-## ⭐ Star This Repository
+## Star This Repository
 
 If you find this toolkit useful for your research, please:
-- ⭐ Star the repository
-- 📢 Share with colleagues
-- 📝 Cite in publications
-- 🐛 Report issues
-- 💡 Suggest improvements
+- Star the repository
+- Share with colleagues
+- Cite in publications
+- Report issues
+- Suggest improvements
 
 ---
 
-**Made with ❤️ for the drug discovery community**
-
-*Advancing computational drug design through open science*
+**Advancing computational drug design through open science**
