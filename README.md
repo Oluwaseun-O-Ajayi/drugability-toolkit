@@ -508,29 +508,19 @@ Please cite this toolkit in publications (see Citation section below)
 ### Software Citation
 
 ```bibtex
-@software{drugability_toolkit_2024,
+@software{ajayi2026drugabilitytoolkit,
   author = {Ajayi, Oluwaseun O.},
-  title = {Drugability Toolkit: Computational Drug Developability Assessment},
-  year = {2024},
-  publisher = {GitHub},
-  url = {https://github.com/Oluwaseun-O-Ajayi/drugability-toolkit},
-  version = {1.0.0}
+  title = {Drugability Toolkit: RDKit-based Workflow for Small-Molecule Developability Assessment},
+  year = {2026},
+  publisher = {Zenodo},
+  version = {1.0.0},
+  doi = {10.5281/zenodo.21652624},
+  url = {https://doi.org/10.5281/zenodo.21652624}
 }
 ```
+Citation (APA Style)
 
-### When Published (Future)
-
-After obtaining DOI and publishing protocol:
-```bibtex
-@article{ajayi2024drugability,
-  author = {Ajayi, Oluwaseun O.},
-  title = {Computational Assessment of Small Molecule Drug Developability},
-  journal = {Current Protocols},
-  year = {2024},
-  doi = {10.xxxx/xxxxx}
-}
-```
-
+Ajayi, O. O. (2026). Drugability Toolkit: RDKit-based Workflow for Small-Molecule Developability Assessment (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.21652624
 ---
 
 ## Methodology
