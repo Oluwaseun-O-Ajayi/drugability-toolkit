@@ -1,21 +1,37 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
+
+title: "Drugability Toolkit: RDKit-based Workflow for Small-Molecule Developability Assessment"
+
 authors:
   - family-names: "Ajayi"
     given-names: "Oluwaseun O."
     email: "oluwaseun.ajayi@uga.edu"
     affiliation: "University of Georgia"
     orcid: "https://orcid.org/0000-0003-0040-7217"
-title: "Drugability Toolkit: RDKit-based Workflow for Small-Molecule Developability Assessment"
-version: 1.0.0
-date-released: 2024-12-30
+
+version: "1.0.0"
+doi: "10.5281/zenodo.21652624"
+date-released: "2026-07-28"
+
 url: "https://github.com/Oluwaseun-O-Ajayi/drugability-toolkit"
 repository-code: "https://github.com/Oluwaseun-O-Ajayi/drugability-toolkit"
+
+license: "MIT"
+
 keywords:
   - cheminformatics
-  - RDKit
+  - rdkit
   - drug-likeness
-  - medicinal chemistry
-  - computational chemistry
-  - synthetic accessibility
-license: MIT
+  - medicinal-chemistry
+  - computational-chemistry
+  - synthetic-accessibility
+
+abstract: >
+  Drugability Toolkit is an open-source cheminformatics workflow
+  for interpretable small-molecule assessment and reproducible
+  compound screening. The toolkit integrates descriptor
+  calculation, drug-likeness evaluation, ADMET flag generation,
+  synthetic accessibility estimation, batch compound screening,
+  and reporting utilities using established cheminformatics
+  methods and RDKit-based workflows.
