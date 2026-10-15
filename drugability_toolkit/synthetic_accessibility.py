@@ -1,23 +1,18 @@
 """
-Synthetic Accessibility Score
-==============================
+Synthetic accessibility
+=======================
 
-Estimate synthetic accessibility of molecules using validated computational methods.
+The synthetic accessibility (SA) score is computed with the reference
+implementation of Ertl and Schuffenhauer (J Cheminform 2009, 1, 8) that is
+distributed with RDKit (Contrib/SA_Score). Scores range from 1 (easy) to 10
+(very difficult).
+
+The additional structural-complexity terms returned alongside the score
+(ring, stereocentre, size, spiro and bridgehead counts) are descriptive
+quantities defined in this module; they are not part of the SA score.
 
 Author: Oluwaseun O. Ajayi
-Institution: University of Georgia
-Email: oluwaseun.ajayi@uga.edu
-
-References:
------------
-1. Ertl & Schuffenhauer (2009) J Cheminform 1:8
-   "Estimation of synthetic accessibility score of drug-like molecules based on
-   molecular complexity and fragment contributions"
-
-2. Coley et al. (2017) ACS Cent Sci 3:434-443
-   "Prediction of organic reaction outcomes using machine learning"
-
-Note: This implementation uses the validated SA_Score algorithm from Ertl & Schuffenhauer.
+License: MIT
 """
 
 from rdkit import Chem
@@ -26,6 +21,18 @@ from rdkit.Chem import Fragments
 import numpy as np
 import math
 from typing import Dict, Tuple, Optional
+import os
+import sys
+
+from rdkit.Chem import RDConfig
+
+_SA_DIR = os.path.join(RDConfig.RDContribDir, 'SA_Score')
+if _SA_DIR not in sys.path:
+    sys.path.append(_SA_DIR)
+try:
+    import sascorer  # Ertl and Schuffenhauer reference implementation shipped with RDKit
+except ImportError as exc:  # pragma: no cover
+    raise ImportError('RDKit Contrib/SA_Score was not found; install RDKit from PyPI or conda-forge') from exc
 
 
 class SyntheticAccessibilityScorer:
@@ -33,7 +40,7 @@ class SyntheticAccessibilityScorer:
     Calculate synthetic accessibility scores for drug-like molecules.
     
     The SA score ranges from 1 (easy to synthesize) to 10 (very difficult).
-    Based on the validated algorithm by Ertl & Schuffenhauer (2009).
+    Uses the RDKit reference implementation of Ertl & Schuffenhauer (2009).
     """
     
     def __init__(self):
@@ -67,46 +74,20 @@ class SyntheticAccessibilityScorer:
         if mol is None:
             return None
         
-        # Component 1: Molecular complexity
-        complexity = self._calculate_complexity(mol)
-        
-        # Component 2: Ring complexity
-        ring_complexity = self._calculate_ring_complexity(mol)
-        
-        # Component 3: Stereochemistry complexity
-        stereo_complexity = self._calculate_stereo_complexity(mol)
-        
-        # Component 4: Size penalty
-        size_penalty = self._calculate_size_penalty(mol)
-        
-        # Component 5: Spiro complexity
-        spiro_complexity = self._calculate_spiro_complexity(mol)
-        
-        # Component 6: Bridgehead complexity
-        bridgehead_complexity = self._calculate_bridgehead_complexity(mol)
-        
-        # Calculate raw SA score
-        raw_score = (complexity + 
-                     ring_complexity + 
-                     stereo_complexity + 
-                     size_penalty +
-                     spiro_complexity +
-                     bridgehead_complexity)
-        
-        # Normalize to 1-10 scale
-        sa_score = self._normalize_score(raw_score)
-        
+        sa_score = float(sascorer.calculateScore(mol))
+
         return {
             'SA_score': sa_score,
-            'complexity': complexity,
-            'ring_complexity': ring_complexity,
-            'stereo_complexity': stereo_complexity,
-            'size_penalty': size_penalty,
-            'spiro_complexity': spiro_complexity,
-            'bridgehead_complexity': bridgehead_complexity,
-            'interpretation': self._interpret_score(sa_score)
+            'interpretation': self._interpret_score(sa_score),
+            # Descriptive complexity terms; not part of the SA score.
+            'complexity': self._calculate_complexity(mol),
+            'ring_complexity': self._calculate_ring_complexity(mol),
+            'stereo_complexity': self._calculate_stereo_complexity(mol),
+            'size_penalty': self._calculate_size_penalty(mol),
+            'spiro_complexity': self._calculate_spiro_complexity(mol),
+            'bridgehead_complexity': self._calculate_bridgehead_complexity(mol),
         }
-    
+
     def _calculate_complexity(self, mol: Chem.Mol) -> float:
         """
         Calculate molecular complexity based on graph theory.
@@ -237,18 +218,6 @@ class SyntheticAccessibilityScorer:
         
         return bridgehead_count * 0.7
     
-    def _normalize_score(self, raw_score: float) -> float:
-        """
-        Normalize raw score to 1-10 scale.
-        
-        Uses sigmoid-like transformation.
-        """
-        # Apply sigmoid transformation
-        normalized = 1 + (9 / (1 + math.exp(-raw_score + 3)))
-        
-        # Clamp to 1-10
-        return max(1.0, min(10.0, normalized))
-    
     def _interpret_score(self, sa_score: float) -> str:
         """
         Provide interpretation of SA score.
@@ -290,14 +259,8 @@ class SyntheticAccessibilityScorer:
         num_carbonyls = len(mol.GetSubstructMatches(Chem.MolFromSmarts('[C](=O)')))
         num_amines = len(mol.GetSubstructMatches(Chem.MolFromSmarts('[N;H1,H2]')))
         
-        # Estimate number of synthetic steps
         sa_result = self.calculate_sa_score(smiles)
-        if sa_result:
-            sa_score = sa_result['SA_score']
-            # Rough estimate: SA score correlates with synthetic steps
-            estimated_steps = int(sa_score * 1.5)
-        else:
-            estimated_steps = "Unknown"
+        sa_score = sa_result['SA_score'] if sa_result else None
         
         return {
             'rotatable_bonds': num_rotatable,
@@ -306,9 +269,8 @@ class SyntheticAccessibilityScorer:
                 'carbonyls': num_carbonyls,
                 'amines': num_amines
             },
-            'estimated_steps': estimated_steps,
-            'strategic_disconnections': num_rotatable,
-            'recommendation': self._retrosynthesis_recommendation(sa_score if sa_result else 5)
+            'SA_score': sa_score,
+            'recommendation': self._retrosynthesis_recommendation(sa_score) if sa_score is not None else 'Unknown'
         }
     
     def _retrosynthesis_recommendation(self, sa_score: float) -> str:
@@ -316,7 +278,7 @@ class SyntheticAccessibilityScorer:
         if sa_score <= 3:
             return "Simple synthesis - consider direct approaches"
         elif sa_score <= 5:
-            return "Moderate complexity - plan 3-5 step synthesis"
+            return "Moderate complexity - a short linear route is likely"
         elif sa_score <= 7:
             return "Complex - consider convergent synthesis"
         else:
@@ -373,7 +335,7 @@ class SyntheticAccessibilityScorer:
         print(f"  SA Score:              {sa_result['SA_score']:.2f} / 10")
         print(f"  Interpretation:        {sa_result['interpretation']}\n")
         
-        print("Score Components:")
+        print("Structural complexity terms (descriptive, not part of the SA score):")
         print(f"  Complexity:            {sa_result['complexity']:.2f}")
         print(f"  Ring Complexity:       {sa_result['ring_complexity']:.2f}")
         print(f"  Stereo Complexity:     {sa_result['stereo_complexity']:.2f}")
@@ -382,7 +344,6 @@ class SyntheticAccessibilityScorer:
         print(f"  Bridgehead Complexity: {sa_result['bridgehead_complexity']:.2f}\n")
         
         print("Retrosynthetic Analysis:")
-        print(f"  Estimated Steps:       {retro['estimated_steps']}")
         print(f"  Rotatable Bonds:       {retro['rotatable_bonds']}")
         print(f"  Functional Groups:     {sum(retro['functional_groups'].values())}")
         print(f"  Strategy:              {retro['recommendation']}")
@@ -394,7 +355,7 @@ class SyntheticAccessibilityScorer:
 if __name__ == "__main__":
     print("\n" + "="*70)
     print("SYNTHETIC ACCESSIBILITY SCORER")
-    print("Validated Algorithm for Synthesis Prediction")
+    print("Ertl and Schuffenhauer SA score (RDKit reference implementation)")
     print("="*70 + "\n")
     
     scorer = SyntheticAccessibilityScorer()
@@ -427,5 +388,5 @@ if __name__ == "__main__":
         print(f"{i}. {mol_name}")
         print(f"   SA Score: {result['SA_score']:.2f} - {result['interpretation']}\n")
     
-    print("✅ SA Score validated with known molecules")
+    print("SA scores computed for the example molecules")
     print("="*70)
