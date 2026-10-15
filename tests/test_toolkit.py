@@ -130,7 +130,7 @@ SCRIPTS = sorted((ROOT / "examples").glob("*.py")) + sorted((ROOT / "validation"
 
 @pytest.mark.parametrize("script", SCRIPTS, ids=lambda p: p.name)
 def test_example_and_validation_scripts_run(script, tmp_path):
-    env = dict(os.environ, MPLBACKEND="Agg")
+    env = dict(os.environ, MPLBACKEND="Agg", PYTHONIOENCODING="utf-8")
     proc = subprocess.run([sys.executable, str(script)], cwd=tmp_path, env=env,
                           capture_output=True, text=True, timeout=300)
     assert proc.returncode == 0, proc.stderr[-2000:]
