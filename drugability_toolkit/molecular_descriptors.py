@@ -29,8 +29,7 @@ class MolecularDescriptorCalculator:
     """
     Calculate molecular descriptors relevant to drug development.
     
-    All methods are based on published algorithms and validated against
-    known drug molecules.
+    Descriptors are computed with RDKit implementations of published methods.
     """
     
     def __init__(self):
@@ -354,5 +353,5 @@ if __name__ == "__main__":
     )
     print(f"\nTanimoto Similarity (Aspirin vs Ibuprofen): {similarity:.3f}")
     
-    print("\n✅ Descriptor calculation validated against known drugs")
+    print("\nDescriptors calculated for the example drugs")
     print("="*70)

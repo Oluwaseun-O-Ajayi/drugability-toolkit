@@ -3,9 +3,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from molecular_descriptors import MolecularDescriptorCalculator
-from druglikeness_filters import DrugLikenessFilter
-from synthetic_accessibility import SyntheticAccessibilityScorer
+from drugability_toolkit import MolecularDescriptorCalculator
+from drugability_toolkit import DrugLikenessFilter
+from drugability_toolkit import SyntheticAccessibilityScorer
 import pandas as pd
 
 print("\n" + "="*70)
@@ -108,7 +108,7 @@ print(f"  LogP:   {df['LogP'].min():.2f} - {df['LogP'].max():.2f}")
 print(f"  QED:    {df['QED'].min():.3f} - {df['QED'].max():.3f}")
 
 # Save results
-output_file = 'results/screening_results.csv'
+output_file = Path(__file__).resolve().parent.parent / 'results' / 'screening_results.csv'
 df.to_csv(output_file, index=False)
 print(f"\n✅ Results saved to: {output_file}")
 print("="*70 + "\n")
