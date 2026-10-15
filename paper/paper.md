@@ -53,7 +53,7 @@ The toolkit gives instructors and students a citable, tested reference for how t
 
 # AI usage disclosure
 
-Generative AI (Claude, Anthropic) was used in October 2026 to review the code, restructure it into a package, replace the synthetic accessibility calculation with the reference implementation, rewrite the ADMET module documentation, write the tests and continuous-integration configuration, revise the README, and draft this paper. The author reviewed every change, ran the tests and examples, checked all references against their sources, and made the design decisions.
+Claude Opus 5.5 (Anthropic) was used in October 2026 for code review, refactoring, test writing and revision of this paper. The author reviewed, ran and verified all changes and takes full responsibility for the software and the paper.
 
 # Acknowledgements
 
