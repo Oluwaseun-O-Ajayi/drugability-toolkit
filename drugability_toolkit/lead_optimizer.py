@@ -19,9 +19,9 @@ References:
 
 from rdkit import Chem
 from rdkit.Chem import Descriptors, Lipinski, Crippen, MolSurf
-from molecular_descriptors import MolecularDescriptorCalculator
-from druglikeness_filters import DrugLikenessFilter
-from admet_predictor import ADMETPredictor
+from .molecular_descriptors import MolecularDescriptorCalculator
+from .druglikeness_filters import DrugLikenessFilter
+from .admet_flags import ADMETFlags
 from typing import Dict, List, Tuple
 import numpy as np
 
@@ -37,7 +37,7 @@ class LeadOptimizer:
         """Initialize optimizer with component tools."""
         self.descriptor_calc = MolecularDescriptorCalculator()
         self.filter_tool = DrugLikenessFilter()
-        self.admet_predictor = ADMETPredictor()
+        self.admet_predictor = ADMETFlags()
         
     def analyze_compound(self, smiles: str) -> Dict[str, any]:
         """
