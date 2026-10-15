@@ -3,7 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from druglikeness_filters import DrugLikenessFilter
+from drugability_toolkit import DrugLikenessFilter
 import pandas as pd
 
 print("\n" + "="*70)
@@ -24,7 +24,7 @@ passing_drugs = {
     'Atenolol': 'CC(C)NCC(COc1ccc(CC(N)=O)cc1)O',
     'Amoxicillin': 'CC1(C)SC2C(NC(=O)C(N)c3ccc(O)cc3)C(=O)N2C1C(=O)O',
     'Warfarin': 'CC(=O)CC(c1ccccc1)c1c(O)c2ccccc2oc1=O',
-    'Propranolol': 'CC(C)NCC(O)COc1cccc2[nH]ccc12'
+    'Propranolol': 'CC(C)NCC(O)COc1cccc2ccccc12'
 }
 
 # Known molecules that FAIL RO5 (but may still be drugs - beyond RO5)
@@ -113,8 +113,8 @@ df_fail = pd.DataFrame(fail_results)
 print(df_fail.to_string(index=False))
 
 # Save results
-df_pass.to_csv('validation/lipinski_validation_drugs.csv', index=False)
-df_fail.to_csv('validation/lipinski_validation_beyond_ro5.csv', index=False)
+df_pass.to_csv(Path(__file__).parent / 'lipinski_validation_drugs.csv', index=False)
+df_fail.to_csv(Path(__file__).parent / 'lipinski_validation_beyond_ro5.csv', index=False)
 
 print("\n" + "="*70)
 if overall_accuracy >= 90:

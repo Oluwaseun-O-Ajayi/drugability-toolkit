@@ -4,11 +4,11 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from molecular_descriptors import MolecularDescriptorCalculator
-from druglikeness_filters import DrugLikenessFilter
-from admet_predictor import ADMETPredictor
-from synthetic_accessibility import SyntheticAccessibilityScorer
-from lead_optimizer import LeadOptimizer
+from drugability_toolkit import MolecularDescriptorCalculator
+from drugability_toolkit import DrugLikenessFilter
+from drugability_toolkit import ADMETPredictor
+from drugability_toolkit import SyntheticAccessibilityScorer
+from drugability_toolkit import LeadOptimizer
 import pandas as pd
 
 print("\n" + "="*70)
