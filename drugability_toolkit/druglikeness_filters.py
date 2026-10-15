@@ -2,7 +2,7 @@
 Drug-likeness Filters
 =====================
 
-Implementation of validated drug-likeness rules from medicinal chemistry literature.
+Implementation of published drug-likeness rules from the medicinal chemistry literature.
 
 Author: Oluwaseun O. Ajayi
 Institution: University of Georgia
@@ -37,10 +37,10 @@ import pandas as pd
 
 class DrugLikenessFilter:
     """
-    Apply validated drug-likeness filters from medicinal chemistry literature.
+    Apply published drug-likeness filters from the medicinal chemistry literature.
     
-    All filters are based on published criteria and validated against
-    known drug molecules and clinical candidates.
+    Thresholds follow the cited publications; the BBB and lead-likeness
+    categories are simplified versions of the cited guidelines.
     """
     
     def __init__(self):
@@ -424,7 +424,7 @@ class DrugLikenessFilter:
 if __name__ == "__main__":
     print("\n" + "="*70)
     print("DRUG-LIKENESS FILTERS")
-    print("Validated Rules from Medicinal Chemistry Literature")
+    print("Published rules from the medicinal chemistry literature")
     print("="*70 + "\n")
     
     filter_tool = DrugLikenessFilter()
@@ -440,5 +440,5 @@ if __name__ == "__main__":
     for name, smiles in test_drugs.items():
         filter_tool.print_report(smiles, name)
     
-    print("✅ All filters validated against FDA-approved drugs")
+    print("Filters applied to the example drugs")
     print("="*70)
