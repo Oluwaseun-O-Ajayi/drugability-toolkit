@@ -51,6 +51,10 @@ Correctness is checked by a test suite that compares descriptors with direct RDK
 
 The toolkit gives instructors and students a citable, tested reference for how the common drug-likeness rules are computed, and gives small academic projects a scriptable profiling step whose assumptions are visible. The repository includes worked examples on approved oral drugs and beyond-rule-of-five compounds. Benchmarking the ADMET flags against experimental data is planned and is required before they are used for any compound decision.
 
+# AI usage disclosure
+
+The author designed and wrote the original version of this software in December 2025, and wrote this paper. In October 2026, Claude Opus 5.5 (Anthropic) was used for code review, refactoring, and testing. The author directed and verified all changes and takes full responsibility for the work.
+
 # Acknowledgements
 
 This work was conducted independently and received no specific funding from any agency in the public, commercial, or not-for-profit sectors.
