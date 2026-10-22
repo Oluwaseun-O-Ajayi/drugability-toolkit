@@ -49,7 +49,7 @@ print("BBB flag:", flags["Distribution"]["BBB_penetration"],
 LeadOptimizer().print_report(smiles, "Aspirin")
 ```
 
-More complete scripts are in `examples/` (single molecules, batch screening of a small library, ADMET flags and lead assessment). `validation/` contains two scripts that profile approved oral drugs and beyond-rule-of-five compounds.
+More complete scripts are in `examples/` (single molecules, batch screening of a small library, ADMET flags and lead assessment). Five reproducible case studies, each with a question, bundled input data and saved results, are described in [`examples/CASE_STUDIES.md`](examples/CASE_STUDIES.md). `validation/` contains two scripts that profile approved oral drugs and beyond-rule-of-five compounds.
 
 ## Modules
 

@@ -1,0 +1,11 @@
+Drug,MW,LogP,Ro5_violations,Lipinski,Veber,Ghose,Egan,Lead_like
+Aspirin,180.2,1.31,0,True,True,False,True,False
+Ibuprofen,206.3,3.07,0,True,True,False,True,False
+Atorvastatin,558.7,6.31,2,False,False,False,False,False
+Metformin,129.2,-1.03,0,True,True,False,True,False
+Sildenafil,474.6,1.61,0,True,True,True,True,False
+Lisinopril,405.5,1.24,0,True,False,True,False,False
+Amlodipine,408.9,2.27,0,True,True,True,True,False
+Omeprazole,345.4,2.9,0,True,True,True,True,True
+Warfarin,308.3,3.61,0,True,True,True,True,False
+Sertraline,306.2,5.18,1,True,True,True,True,False

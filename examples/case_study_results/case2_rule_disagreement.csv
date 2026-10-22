@@ -1,0 +1,6 @@
+Drug,Failed_rule,Failing_properties,Rules_passed
+Aspirin,Ghose,NumAtoms,"Lipinski, Veber, Egan"
+Ibuprofen,Ghose,NumAtoms,"Lipinski, Veber, Egan"
+Metformin,Ghose,"LogP, MW, MR, NumAtoms","Lipinski, Veber, Egan"
+Lisinopril,Veber,RotBonds,"Lipinski, Ghose"
+Lisinopril,Egan,TPSA,"Lipinski, Ghose"

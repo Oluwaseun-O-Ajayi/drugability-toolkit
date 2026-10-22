@@ -49,7 +49,7 @@ Correctness is checked by a test suite that compares descriptors with direct RDK
 
 # Research impact statement
 
-The toolkit gives instructors and students a citable, tested reference for how the common drug-likeness rules are computed, and gives small academic projects a scriptable profiling step whose assumptions are visible. The repository includes worked examples on approved oral drugs and beyond-rule-of-five compounds. Benchmarking the ADMET flags against experimental data is planned and is required before they are used for any compound decision.
+The toolkit gives instructors and students a citable, tested reference for how the common drug-likeness rules are computed, and gives small academic projects a scriptable profiling step whose assumptions are visible. The repository includes five reproducible case studies (`examples/CASE_STUDIES.md`) that run on bundled data: profiling approved oral drugs, tracing why published rules disagree, recognizing drugs beyond the rule of five, triaging compounds with structural alerts, and reading optimization advice critically. Benchmarking the ADMET flags against experimental data is planned and is required before they are used for any compound decision.
 
 # AI usage disclosure
 

@@ -1,0 +1,14 @@
+Set,Drug,MW,HBD,HBA,Ro5_violations,Lipinski,SA_score
+Beyond Ro5,Cyclosporine,1202.6,5,12,2,False,6.88
+Beyond Ro5,Vancomycin,1449.3,19,25,3,False,8.21
+Beyond Ro5,Paclitaxel,853.9,4,14,2,False,5.92
+Small oral drug,Aspirin,180.2,1,3,0,True,1.58
+Small oral drug,Ibuprofen,206.3,1,1,0,True,2.19
+Small oral drug,Atorvastatin,558.7,4,4,2,False,3.31
+Small oral drug,Metformin,129.2,4,2,0,True,3.67
+Small oral drug,Sildenafil,474.6,1,7,0,True,2.74
+Small oral drug,Lisinopril,405.5,4,5,0,True,3.17
+Small oral drug,Amlodipine,408.9,2,7,0,True,2.93
+Small oral drug,Omeprazole,345.4,1,5,0,True,3.06
+Small oral drug,Warfarin,308.3,1,4,0,True,2.63
+Small oral drug,Sertraline,306.2,1,1,1,True,2.92

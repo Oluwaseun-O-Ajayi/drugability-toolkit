@@ -1,0 +1,5 @@
+Drug,Priority,Property,Value,Threshold,Severity
+Atorvastatin,high,Molecular Weight,558.65,500,medium
+Atorvastatin,high,LogP,6.31,5,high
+Atorvastatin,high,Rotatable Bonds,12.0,10,medium
+Lisinopril,low,Rotatable Bonds,12.0,10,medium

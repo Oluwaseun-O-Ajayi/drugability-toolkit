@@ -1,0 +1,6 @@
+Compound,SMILES,Substructure_class
+5-benzylidenerhodanine,O=C1NC(=S)SC1=Cc1ccccc1,ene-rhodanine
+Catechol,Oc1ccccc1O,catechol
+"1,4-Benzoquinone",O=C1C=CC(=O)C=C1,quinone
+4-Aminophenol,Nc1ccc(O)cc1,aminophenol
+4-Hydroxyazobenzene,Oc1ccc(cc1)N=Nc1ccccc1,azo

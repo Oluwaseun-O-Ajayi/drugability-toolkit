@@ -1,0 +1,16 @@
+Set,Compound,PAINS,Brenk,n_PAINS,n_Brenk
+Reference substructure,5-benzylidenerhodanine,ene_rhod_A(235),Michael_acceptor_1; Thiocarbonyl_group,1,2
+Reference substructure,Catechol,catechol_A(92),catechol,1,1
+Reference substructure,"1,4-Benzoquinone",quinone_A(370),chinone_1,1,1
+Reference substructure,4-Aminophenol,anil_no_alk(40),aniline; hydroquinone,1,2
+Reference substructure,4-Hydroxyazobenzene,azo_A(324),diazo_group,1,1
+Approved drug,Aspirin,,phenol_ester,0,1
+Approved drug,Ibuprofen,,,0,0
+Approved drug,Atorvastatin,,,0,0
+Approved drug,Metformin,,imine_1; imine_2,0,2
+Approved drug,Sildenafil,,,0,0
+Approved drug,Lisinopril,,Aliphatic_long_chain,0,1
+Approved drug,Amlodipine,,Aliphatic_long_chain,0,1
+Approved drug,Omeprazole,,,0,0
+Approved drug,Warfarin,,cumarine,0,1
+Approved drug,Sertraline,,,0,0
