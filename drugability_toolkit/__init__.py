@@ -10,7 +10,7 @@ from .lead_optimizer import LeadOptimizer
 from .molecular_descriptors import MolecularDescriptorCalculator
 from .synthetic_accessibility import SyntheticAccessibilityScorer
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 __all__ = [
     "ADMETFlags",
